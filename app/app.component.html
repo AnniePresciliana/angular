@@ -1,0 +1,71 @@
+<div>
+  <h1>Cadastro de Autos</h1>
+  
+</div>
+
+<div>
+  Tipo: <input type="text" [(ngModel)]="newAuto.tipo">
+<span *ngIf = "showErrorTipo" class="error">Campo Obrigatório!</span>
+</div>
+
+<div>
+  Marca:<input type="text" [(ngModel)]="newAuto.marca">
+  <span *ngIf="showErrorMarca" class="error">*Campo Obrigatorio!</span>
+
+</div>
+
+<div>
+  Modelo:<input type="text" [(ngModel)]="newAuto.modelo">
+  <span *ngIf="showErrorModelo" class="error">*Campo Obrigatorio!</span>
+
+</div>
+
+<div>
+  Cor:<input type="text" [(ngModel)]="newAuto.cor">
+  <span *ngIf="showErrorCor" class="error">*Campo Obrigatorio!</span>
+
+</div>
+
+<div>
+  Fabricação: <input type="date" [(ngModel)]="newAuto.fabricacao">
+  <span *ngIf="showErrorFabricacao" class="error">*Campo Obrigatorio!</span>
+</div>
+
+
+<input type="button" value="Salvar" (click)="save()">
+
+
+<table>
+
+  <thead>
+    <th> Tipo</th>
+    <th> Marca</th>
+    <th> Modelo</th>
+    <th> Cor </th>
+    <th> AnoFabricação</th>
+    <th> Edit </th>
+    <th> Delete </th>
+  </thead>
+
+  <tbody>
+    <tr *ngIf="autos.length == 0">
+
+      <td colspan="8">Não existe auto cadastrado</td>
+
+    </tr>
+    <tr *ngFor="let autoTEMP of autos">
+      <td>{{autoTEMP.tipo | uppercase }}</td>
+      <td>{{autoTEMP.marca | uppercase}}</td>
+      <td>{{autoTEMP.modelo | uppercase}} </td>
+      <td>{{autoTEMP.cor |lowercase}}</td>
+      <td>{{autoTEMP.fabricacao | date : "yyyy " }}
+      
+      <td>
+        <input type="button" value="Edit" (click)="edit(autoTEMP)"></td>
+      <td>
+        <input type="button" value="Delete" (click)="delete(autoTEMP)">
+      </td>
+
+    </tr>
+  </tbody>
+</table>
